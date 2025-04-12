@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Item({ name, category }) {
+  const [status,setStatus]=useState(true)
+  function handleStatus(){
+    setStatus(!status)
+  }
+  
   return (
-    <li className="">
+    <li className={status?"":"in-cart"}>
       <span>{name}</span>
       <span className="category">{category}</span>
-      <button className="add">Add to Cart</button>
+      <button className="add" onClick={handleStatus}>{status?"Add to Cart":"Remove From Cart"}</button>
     </li>
   );
 }
